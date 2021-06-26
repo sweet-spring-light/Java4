@@ -1,0 +1,133 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--========== CSS ==========-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/home.css" type="text/css">
+
+    <title>Wins</title>
+</head>
+
+<body>
+    <div class="container">
+        <!--========== HEADER ==========-->
+        <header class="header">
+            <div class="header__container">
+                <img src="./assets/img/mullet.jpg" alt="" class="header__img"> <a href="#"
+                    class="header__logo">Hello</a>
+                <div class="header__toggle">
+                    <i class='bx bx-menu' id="header-toggle"></i>
+                </div>
+            </div>
+        </header>
+        <!--========== NAV ==========-->
+        <div class="navtest" id="navbar">
+            <nav class="nav__container">
+                <div class="nav__icons">
+                    <a href="#" class="nav__link nav__logo">
+                        <i class='bx bxs-movie-play nav__icon'></i> <span class="nav__logo-name">Hello</span>
+                    </a>
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Profile</h3>
+                            <a href="/HomeUser" class="nav__link active"> <i class='bx bx-home nav__icon'></i> <span
+                                    class="nav__name">Home</span>
+                            </a>
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link"> <i class='bx bx-user nav__icon'></i> <span
+                                        class="nav__name">Profile</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">Passwords</a> <a href="#"
+                                            class="nav__dropdown-item">Mail</a> <a href="#"
+                                            class="nav__dropdown-item">Accounts</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Menu</h3>
+                            <a href="#" class="nav__link"> <i class='bx bx-bell nav__icon'></i> <span
+                                    class="nav__name">Notification</span>
+                            </a> <a href="/HomeUser/favorite/list" class="nav__link"> <i
+                                    class='bx bx-heart nav__icon'></i> <span class="nav__name">Like</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/PT15302-UD/LogoutServler" class="nav__link nav__logout"> <i
+                        class='bx bx-log-out nav__icon'></i> <span class="nav__name">Log
+                        Out</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <!--========== CONTENTS ==========-->
+    <div class="contain">
+        <div class="movies-heading">
+            <h2>Movies</h2>
+        </div>
+        <section id="movies-list">
+            <!-- box1-->
+            <c:forEach items="${listPost}" var="post">
+                <div class="movies-box">
+                    <div class="movies-img">
+                        <img src="<%=request.getContextPath()%>/view/assets/img/${post.image }">
+                    </div>
+                    <a class="tittle" href="#">${post.tittle}</a>
+                    <div class="active">
+                        <a href="<%=request.getContextPath()%>/HomeUser/like?id=${post.id }" class="love">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path>
+                            </svg>
+                            Like
+                        </a>
+                        <a class="share">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z">
+                                </path>
+                                <path fill-rule="evenodd"
+                                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z">
+                                </path>
+                            </svg>
+                            Share
+                        </a>
+                    </div>
+                </div>
+            </c:forEach>
+        </section>
+    </div>
+    <!--========== MAIN JS ==========-->
+
+    <script src="./assets/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#kt_datatable_search_status").on('change', function () {
+                var value = $(this).val();
+                alert(value);
+            });
+        });
+    </script>
+</body>
+
+</html>
